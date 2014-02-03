@@ -1,4 +1,34 @@
-### jshint config
+Use jshint.json for your release build, the options are listed below.
+
+Use jshint-dev.json while editing your code.
+The differences are:
+
+- you can skip semicolons (asi = false).
+- you can have trailing whitespace (trailing = false). 
+- you can use debug statements (debug = true).
+- no indent enforced (indent options removed).
+
+#### Example Usage
+
+`bower install p-js/project-settings`
+
+Then in a Gruntfile.
+
+```javascript
+jshint: {
+    devel: {
+        options: grunt.file.readJSON("./bower_components/project-settings/jshint-dev.json"),
+        src: ['src/**/*.js']
+    },
+    release: {
+        options: grunt.file.readJSON("./bower_components/project-settings/jshint.json"),
+        src: ['src/**/*.js']
+    }
+}
+```
+
+
+#### jshint config
 ```json
 {
     // --------------------------------------------------------------------
