@@ -1,0 +1,27 @@
+{
+	"name": "pjs-project-settings",
+	"version": "0.1.0",
+	"bin": {
+		"pjs-settings": "./bin/all",
+		"pjs-settings-tasks": "./bin/grunt-tasks",
+		"pjs-settings-config": "./bin/settings",
+		"pjs-settings-gruntfile": "./bin/gruntfile"
+	},
+	"description": "jshint and jsbeautify settings.",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/p-js/project-settings.git"
+	},
+	"author": "gianni ferullo <giannif@gmail.com>",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/p-js/project-settings/issues"
+	},
+	"dependencies": {
+		"colors": "^0.6.2",
+		"fs-extra": "^0.9.1",
+		"lodash": "^2.4.1",
+		"prompt": "^0.2.13"
+	},
+	"homepage": "https://github.com/p-js/project-settings"
+}

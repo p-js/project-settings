@@ -30,7 +30,7 @@ jshint: {
 
 
 #### jshint config
-```json
+```javascript
 {
     // --------------------------------------------------------------------
     // JSHint Configuration, Strict Edition

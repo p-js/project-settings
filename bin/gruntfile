@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+
+var path = require("path"),
+	prompt = require("prompt"),
+	fs = require("fs-extra"),
+	copyFrom = path.join(__dirname, '..', 'grunt', 'Gruntfile.js'),
+	copyTo = "Gruntfile.js";
+
+require("colors");
+
+prompt.message = "";
+prompt.delimiter = "";
+
+function identical(file1, file2) {
+	file1 = fs.readFileSync(file1).toString().replace(/\s+/g, ' ');
+	file2 = fs.readFileSync(file2).toString().replace(/\s+/g, ' ');
+	return file1 === file2;
+}
+
+function copy() {
+	fs.copySync(copyFrom, "./Gruntfile.js");
+}
+
+if (fs.existsSync(copyTo)) {
+	if (!identical(copyFrom, copyTo)) {
+		prompt.get({
+				properties: {
+					answer: {
+						description: "Overrite Gruntfile.js? (Y)".green
+					}
+				}
+			},
+			function(err, result) {
+				if (err) {
+					console.error("Error:" + err + "".red);
+				} else {
+					if (result && result.answer === "Y") {
+						process.stdin.destroy();
+						fs.removeSync(copyTo);
+						copy();
+						console.warn("Overwrote Gruntfile.js.\n".yellow);
+					}
+				}
+			});
+	}
+} else {
+	copy();
+	console.log("Added Gruntfile.js.\n".cyan);
+}

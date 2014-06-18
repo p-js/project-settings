@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+var path = require("path"),
+	fs = require("fs-extra"),
+	_ = require("lodash"),
+	copyFrom = path.join(__dirname, '..');
+
+function identical(file1, file2) {
+	file1 = fs.readFileSync(file1).toString().replace(/\s+/g, ' ');
+	file2 = fs.readFileSync(file2).toString().replace(/\s+/g, ' ');
+	return file1 === file2;
+}
+
+_.each(["jsbeautify.json", "jshint.json", "jshint-dev.json"], function(f) {
+	var projectFile = path.join(copyFrom, f),
+		targetFile = path.join("./grunt/settings/", f);
+	if (fs.existsSync(targetFile)) {
+		if (!identical(targetFile, projectFile)) {
+			console.log("Overwriting grunt/settings.\n", f);
+			fs.copySync(projectFile, targetFile);
+		} else {
+			console.log(f + " settings are up to date.");
+		}
+	} else {
+		fs.mkdirsSync("./grunt/settings");
+		console.log("Adding grunt/settings.\n", f);
+		fs.copySync(projectFile, targetFile);
+	}
+});
