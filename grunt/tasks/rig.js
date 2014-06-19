@@ -1,4 +1,8 @@
 /* global module */
+/**
+ * Rig replaces //= file with the contents of the file.
+ * It's more useful than concat.
+ */
 module.exports = {
 	all: {
 		expand: true,

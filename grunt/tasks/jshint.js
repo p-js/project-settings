@@ -1,5 +1,9 @@
 /* global module */
+/**
+ * See README.md for more about the jshint settings.
+ */
 module.exports = function(grunt, options) {
+	options.settings = options.settings || {};
 	var src = options.settings.jshint || "src/**/*.js";
 	return {
 		devel: {

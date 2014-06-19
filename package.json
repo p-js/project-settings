@@ -1,6 +1,6 @@
 {
 	"name": "pjs-project-settings",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"bin": {
 		"pjs-settings": "./bin/all",
 		"pjs-settings-tasks": "./bin/grunt-tasks",

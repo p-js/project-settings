@@ -1,4 +1,8 @@
 /* global module */
+/**
+ * No customization here.
+ * Convention is to uglify all js in the dist dir.
+ */
 module.exports = {
 	all: {
 		expand: true,
