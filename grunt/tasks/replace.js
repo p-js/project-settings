@@ -1,4 +1,8 @@
 /* global module */
+/**
+ * Common in PJS projects are references to @@verion and @@timestamp.
+ * Replace is run on the dist dir.
+ */
 module.exports = {
 	dist: {
 		options: {
@@ -10,7 +14,7 @@ module.exports = {
 				replacement: '<%= pkg.version %><%= grunt.config("buildNumber") %>'
 			}]
 		},
-		src: "dist/*.js",
+		src: "dist/**",
 		dest: "./"
 	}
 };
