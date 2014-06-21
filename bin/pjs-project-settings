@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+var packageJSON = require(require("path").join(__dirname, '..', 'package.json')),
+	prompt = require("prompt");
+console.log("pjs-project-settings version: " + packageJSON.version);
+
+require("colors");
+
+prompt.message = "";
+prompt.delimiter = "";
+
+require("../src/settings")(function() {
+	console.log("Settings complete");
+});
+require("../src/tasks")(function() {
+	console.log("Tasks complete");
+});
+require("../src/gruntfile")(function() {
+	console.log("Gruntfile complete");
+});

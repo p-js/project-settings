@@ -1,7 +1,64 @@
-Use jshint.json for your release build, the options are listed below.
+# project-settings
+> pjs-project-settings is a global npm package that helps other pjs projects keep their build process up to date. 
 
-Use jshint-dev.json while editing your code.
-The differences are:
+## Installation
+Install pjs-project-settings globally.
+
+```shell
+$ npm i pjs-project-settings -g
+```
+
+Then run pjs-project-settings from the directory you want to update. 
+
+It will override your Gruntfile.js and add a directory called grunt/tasks and grunt/settings.
+
+You'll be prompted for every override, except for settings, which should be kept up to date. 
+
+If you have an existing Gruntfile and want to preserve some of your tasks, try using [grunt-generate-configs](https://github.com/creynders/grunt-generate-configs) with -js option. `generate_configs -js` from the directory of your project. Then copy the output to the grunt/tasks as you see fit.
+
+Once you're set up, make sure the grunt tasks are installed and listed in your package.json under devDependencies.
+
+## Grunt tasks
+
+### Basic tasks
+
+* `clean` Removes files and directories.
+* `copy` Copies files and directories.
+* `jsbeautifier` Beautifies js files
+* `jshint` Lints js for errors.
+* `replace` Replaces template vars
+* `rig` Combines js files (like concat but better).
+* `uglify` Minifies js files
+* `watch` Watches for changes and runs tasks when they change, usually the `default` task.
+
+### More specific
+
+* `bump` Bump the version in the package.json and the bower.json.
+* `githooks` pre-commit: Make sure js files are beautified according to p-js conventions. Build a release, and add the dist folder.
+
+### Troubleshooting
+
+You must have the grunt tasks installed. 
+For example, if you get the warning:
+> Warning: Task "jsbeautifier" not found. Use --force to continue.
+
+Run: 
+```shell
+npm i grunt-jsbeautifier --save-dev
+```
+
+### Aliases
+
+This changes often per project, but the most basic `default` grunt task list and `release` grunt task list are included in `grunt/tasks/aliases.yml`.
+
+* default: `clean`, `jshint:devel`, `rig`, `replace`, `copy`
+* release: `clean`, `jshint:release`, `rig`, `replace`, `copy`, `uglify`
+
+### Linting
+
+In grunt/settings you'll find jshint.json and jshint-dev.json. jshint.json is used for release builds, and jshint-dev.json is used for dev builds while you're editing your code.
+
+In dev mode, the differences are:
 
 - you can skip semicolons (asi = false).
 - you can have trailing whitespace (trailing = false). 
@@ -9,146 +66,29 @@ The differences are:
 - you can use console and alert (devel = true).
 - no indent enforced (indent options removed).
 
-#### Example Usage
+For a quick overview of the current settings see [here](https://gist.github.com/giannif/be6f2391bff8a64156f7).
 
-`bower install p-js/project-settings`
+### Beautifying
 
-Then in a Gruntfile.
+Below are the pjs settings for beautifying. See [here](https://github.com/beautify-web/js-beautify) for more about these options.
 
-```javascript
-jshint: {
-    devel: {
-        options: grunt.file.readJSON("./bower_components/project-settings/jshint-dev.json"),
-        src: ['src/**/*.js']
-    },
-    release: {
-        options: grunt.file.readJSON("./bower_components/project-settings/jshint.json"),
-        src: ['src/**/*.js']
-    }
-}
-```
+> **_Workflow Tip_**: If you're using Sublime Text, install JSFormat and use these as your settings. And add `"format_on_save": true`.
 
-
-#### jshint config
 ```javascript
 {
-    // --------------------------------------------------------------------
-    // JSHint Configuration, Strict Edition
-    // --------------------------------------------------------------------
-    //
-    // This is a options template for [JSHint][1], using [JSHint example][2]
-    // and [Ory Band's example][3] as basis and setting config values to
-    // be most strict:
-    //
-    // * set all enforcing options to true
-    // * set all relaxing options to false
-    // * set all environment options to false, except the browser value
-    // * set all JSLint legacy options to false
-    //
-    // [1]: http://www.jshint.com/
-    // [2]: https://github.com/jshint/node-jshint/blob/master/example/config.json
-    // [3]: https://github.com/oryband/dotfiles/blob/master/jshintrc
-    //
-    // @author http://michael.haschke.biz/
-    // @license http://unlicense.org/
-
-    // == Enforcing Options ===============================================
-    //
-    // These options tell JSHint to be more strict towards your code. Use
-    // them if you want to allow only a safe subset of JavaScript, very
-    // useful when your codebase is shared with a big number of developers
-    // with different skill levels.
-
-    "bitwise": true, // Prohibit bitwise operators (&, |, ^, etc.).
-    "curly": true, // Require {} for every new block or scope.
-    "eqeqeq": true, // Require triple equals i.e. `===`.
-    "forin": true, // Tolerate `for in` loops without `hasOwnPrototype`.
-    "immed": true, // Require immediate invocations to be wrapped in parens e.g. `( function(){}() );`
-    "latedef": true, // Prohibit variable use before definition.
-    "newcap": true, // Require capitalization of all constructor functions e.g. `new F()`.
-    "noarg": true, // Prohibit use of `arguments.caller` and `arguments.callee`.
-    "noempty": true, // Prohibit use of empty blocks.
-    "nonew": true, // Prohibit use of constructors for side-effects.
-    "plusplus": false, // Prohibit use of `++` & `--`.
-    "regexp": true, // Prohibit `.` and `[^...]` in regular expressions.
-    "undef": true, // Require all non-global variables be declared before they are used.
-    "strict": false, // Require `use strict` pragma in every file.
-    "trailing": true, // Prohibit trailing whitespaces.
-
-    // == Relaxing Options ================================================
-    //
-    // These options allow you to suppress certain types of warnings. Use
-    // them only if you are absolutely positive that you know what you are
-    // doing.
-
-    "asi": false, // Tolerate Automatic Semicolon Insertion (no semicolons).
-    "boss": false, // Tolerate assignments inside if, for & while. Usually conditions & loops are for comparison, not assignments.
-    "debug": false, // Allow debugger statements e.g. browser breakpoints.
-    "eqnull": false, // Tolerate use of `== null`.
-    "es5": false, // Allow EcmaScript 5 syntax.
-    "esnext": false, // Allow ES.next specific features such as `const` and `let`.
-    "evil": false, // Tolerate use of `eval`.
-    "expr": false, // Tolerate `ExpressionStatement` as Programs.
-    "funcscope": false, // Tolerate declarations of variables inside of control structures while accessing them later from the outside.
-    "globalstrict": false, // Allow global "use strict" (also enables 'strict').
-    "iterator": false, // Allow usage of __iterator__ property.
-    "lastsemic": false, // Tolerat missing semicolons when the it is omitted for the last statement in a one-line block.
-    "laxbreak": false, // Tolerate unsafe line breaks e.g. `return [\n] x` without semicolons.
-    "laxcomma": false, // Suppress warnings about comma-first coding style.
-    "loopfunc": false, // Allow functions to be defined within loops.
-    "multistr": false, // Tolerate multi-line strings.
-    "onecase": false, // Tolerate switches with just one case.
-    "proto": false, // Tolerate __proto__ property. This property is deprecated.
-    "regexdash": false, // Tolerate unescaped last dash i.e. `[-...]`.
-    "scripturl": false, // Tolerate script-targeted URLs.
-    "smarttabs": false, // Tolerate mixed tabs and spaces when the latter are used for alignmnent only.
-    "shadow": false, // Allows re-define variables later in code e.g. `var x=1; x=2;`.
-    "sub": false, // Tolerate all forms of subscript notation besides dot notation e.g. `dict['key']` instead of `dict.key`.
-    "supernew": false, // Tolerate `new function () { ... };` and `new Object;`.
-    "validthis": false, // Tolerate strict violations when the code is running in strict mode and you use this in a non-constructor function.
-
-    // == Environments ====================================================
-    //
-    // These options pre-define global variables that are exposed by
-    // popular JavaScript libraries and runtime environments—such as
-    // browser or node.js.
-
-    "browser": true, // Standard browser globals e.g. `window`, `document`.
-    "couch": false, // Enable globals exposed by CouchDB.
-    "devel": false, // Allow development statements e.g. `console.log();`.
-    "dojo": false, // Enable globals exposed by Dojo Toolkit.
-    "jquery": false, // Enable globals exposed by jQuery JavaScript library.
-    "mootools": false, // Enable globals exposed by MooTools JavaScript framework.
-    "node": true, // Enable globals available when code is running inside of the NodeJS runtime environment.
-    "nonstandard": false, // Define non-standard but widely adopted globals such as escape and unescape.
-    "prototypejs": false, // Enable globals exposed by Prototype JavaScript framework.
-    "rhino": false, // Enable globals available when your code is running inside of the Rhino runtime environment.
-    "wsh": false, // Enable globals available when your code is running as a script for the Windows Script Host.
-
-    // == JSLint Legacy ===================================================
-    //
-    // These options are legacy from JSLint. Aside from bug fixes they will
-    // not be improved in any way and might be removed at any point.
-
-    "nomen": false, // Prohibit use of initial or trailing underbars in names.
-    "onevar": false, // Allow only one `var` statement per function.
-    "passfail": false, // Stop on first error.
-    "white": false, // Check against strict whitespace and indentation rules.
-
-    // == Undocumented Options ============================================
-    //
-    // While I've found these options in [example1][2] and [example2][3]
-    // they are not described in the [JSHint Options documentation][4].
-    //
-    // [4]: http://www.jshint.com/options/
-
-    "maxerr": 100, // Maximum errors before stopping.
-    "predef": [ // Extra globals.
-        //"exampleVar",
-        //"anotherCoolGlobal",
-        //"iLoveDouglas"
-    ],
-    "unused":true,
-    "indent": 4 // Specify indentation spacing
+    "indent_with_tabs": true,
+    "preserve_newlines": true,
+    "max_preserve_newlines": 10,
+    "jslint_happy": false,
+    "brace_style": "collapse",
+    "keep_array_indentation": false,
+    "keep_function_indentation": false,
+    "space_before_conditional": true,
+    "break_chained_methods": false,
+    "eval_code": false,
+    "unescape_strings": false,
+    "wrap_line_length": 0
 }
 ```
+
+
