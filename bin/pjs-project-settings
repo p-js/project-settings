@@ -11,10 +11,10 @@ prompt.delimiter = "";
 
 require("../src/settings")(function() {
 	console.log("Settings complete");
-});
-require("../src/tasks")(function() {
-	console.log("Tasks complete");
-});
-require("../src/gruntfile")(function() {
-	console.log("Gruntfile complete");
+	require("../src/tasks")(function() {
+		console.log("Tasks complete");
+		require("../src/gruntfile")(function() {
+			console.log("Gruntfile complete");
+		});
+	});
 });
