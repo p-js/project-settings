@@ -20,7 +20,6 @@ module.exports = function(callback) {
 				};
 			} else {
 				fs.copySync(path.join(fromPath, file), targetFile);
-				util.executeCB(callback);
 			}
 		});
 		if (exists) {
@@ -38,9 +37,10 @@ module.exports = function(callback) {
 							}
 						});
 						util.executeCB(callback);
-
 					}
 				});
+		} else {
+			util.executeCB(callback);
 		}
 	} else {
 		fs.copySync(fromPath, targetDir);
