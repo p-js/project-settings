@@ -1,4 +1,4 @@
-/* global module */
+/* jshint node:true */
 /**
  * addDist is run by the precommit hook.
  */

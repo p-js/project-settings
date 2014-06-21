@@ -20,6 +20,7 @@ module.exports = function(callback) {
 				};
 			} else {
 				fs.copySync(path.join(fromPath, file), targetFile);
+				util.executeCB(callback);
 			}
 		});
 		if (exists) {
@@ -36,14 +37,15 @@ module.exports = function(callback) {
 								fs.copySync(path.join(fromPath, file), path.join(targetDir, file));
 							}
 						});
+						util.executeCB(callback);
+
 					}
 				});
 		}
 	} else {
 		fs.copySync(fromPath, targetDir);
 		console.log("Done adding grunt tasks.\n".cyan);
-	}
-	if (_.isFunction(callback)) {
-		callback();
+		util.executeCB(callback);
+
 	}
 };

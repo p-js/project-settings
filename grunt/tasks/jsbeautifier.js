@@ -1,4 +1,4 @@
-/* global module */
+/* jshint node:true */
 /**
  * all, beautify all js in the src dir (can be overriden with settings.jsbeautifier)
  * precommit, just verifies and doesn't beautify.

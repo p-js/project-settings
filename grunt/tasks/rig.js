@@ -1,4 +1,4 @@
-/* global module */
+/* jshint node:true */
 /**
  * Rig replaces //= file with the contents of the file.
  * It's more useful than concat.

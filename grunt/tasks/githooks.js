@@ -1,4 +1,4 @@
-/* global module */
+/* jshint node:true */
 /**
  * Beautify pre-commit, but don't change the code.
  * If this fails, you can run jsbeautifier:all to beautify everything,

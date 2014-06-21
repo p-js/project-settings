@@ -29,6 +29,7 @@ module.exports = function(callback) {
 							process.stdin.destroy();
 							fs.removeSync(copyTo);
 							copy();
+							util.executeCB(callback);
 							console.warn("Overwrote Gruntfile.js.\n".yellow);
 						}
 					}
@@ -37,8 +38,6 @@ module.exports = function(callback) {
 	} else {
 		copy();
 		console.log("Added Gruntfile.js.\n".cyan);
-	}
-	if (_.isFunction(callback)) {
-		callback();
+		util.executeCB(callback);
 	}
 };

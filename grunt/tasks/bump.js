@@ -1,4 +1,4 @@
-/* global module */
+/* jshint node:true */
 /**
  * Usually run from the command line while doing releases.
  * $ grunt bump --level minor

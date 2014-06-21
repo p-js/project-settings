@@ -1,4 +1,4 @@
-/* global module */
+/* jshint node:true */
 /**
  * See README.md for more about the jshint settings.
  */

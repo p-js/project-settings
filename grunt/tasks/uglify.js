@@ -1,4 +1,4 @@
-/* global module */
+/* jshint node:true */
 /**
  * No customization here.
  * Convention is to uglify all js in the dist dir.

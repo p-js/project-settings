@@ -1,4 +1,4 @@
-/* global module */
+/* jshint node:true */
 /**
  * Common in PJS projects are references to @@verion and @@timestamp.
  * Replace is run on the dist dir.
