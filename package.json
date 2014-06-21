@@ -1,11 +1,11 @@
 {
 	"name": "pjs-project-settings",
 	"version": "0.3.0",
+	"scripts": {
+		"prepublish": "npm prune"
+	},
 	"bin": {
-		"pjs-settings": "./bin/all",
-		"pjs-settings-tasks": "./bin/grunt-tasks",
-		"pjs-settings-config": "./bin/settings",
-		"pjs-settings-gruntfile": "./bin/gruntfile"
+		"pjs-project-settings": "./bin/pjs-project-settings"
 	},
 	"description": "jshint and jsbeautify settings.",
 	"repository": {
