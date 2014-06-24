@@ -12,9 +12,12 @@ module.exports = function(grunt) {
 			pkg: grunt.file.readJSON('package.json'),
 			// settings are a way to override the defaults.
 			settings: {
+				// defaults, these can be removed.
 				clean: "dist/*",
 				jshint: "src/**/*.js",
-				jsbeautifier: "src/**/*.js"
+				jsbeautifier: "src/**/*.js",
+				watch: ["Gruntfile.js", "src/**/*", "test/**/*"],
+				watchTasks: "default"
 			}
 		}
 	});

@@ -1,5 +1,10 @@
 
-0.4.0 / 2014-06-21 
+0.4.2 / 2014-06-24 
+==================
+
+ * jsbeautifier always beautifies package.json and bower.json.
+
+0.4.1 / 2014-06-21 
 ==================
 
  * Fix major bug with callbacks.
