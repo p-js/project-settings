@@ -4,6 +4,9 @@
  * Convention is to uglify all js in the dist dir.
  */
 module.exports = {
+	options: {
+		sourceMap: true
+	},
 	all: {
 		expand: true,
 		cwd: "dist/",
