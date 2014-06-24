@@ -7,6 +7,11 @@ module.exports = function(grunt, options) {
 	options.settings = options.settings || {};
 	var jsbeautifyrc = grunt.file.readJSON("./grunt/settings/jsbeautify.json"),
 		src = options.settings.jsbeautifier || "src/**/*.js";
+	if (grunt.util.kindOf(src) === "string") {
+		src = [src];
+	}
+	// always beautify package.json and bower.json
+	src = src.concat(["package.json", "bower.json"]);
 	return {
 		all: {
 			src: src,
