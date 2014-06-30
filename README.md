@@ -33,7 +33,7 @@ Once you're set up, make sure the grunt tasks are installed and listed in your p
 
 ### More specific
 
-* `bump` Bump the version in the package.json and the bower.json.
+* `bump` Bump the version in the package.json and the bower.json. Example: `grunt bump --level minor`.
 * `githooks` pre-commit: Make sure js files are beautified according to p-js conventions. Build a release, and add the dist folder.
 
 ### Troubleshooting
