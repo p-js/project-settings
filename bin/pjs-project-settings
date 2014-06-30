@@ -7,7 +7,8 @@ var prompt = require("prompt"),
 			"h", "help",
 			"a", "all",
 			"g", "gruntfile",
-			"t", "tasks"
+			"t", "tasks",
+			"d", "devDeps"
 		]
 	});
 

@@ -25,5 +25,8 @@
     "minimist": "^0.2.0",
     "prompt": "^0.2.13"
   },
-  "homepage": "https://github.com/p-js/project-settings"
+  "homepage": "https://github.com/p-js/project-settings",
+  "devDependencies": {
+    "grunt-jsbeautifier": "^0.2.7"
+  }
 }

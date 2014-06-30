@@ -11,3 +11,4 @@ Options:
 	-a, --all 		Run all updates.
 	-g, --gruntfile 	Update the Gruntfile.js.
 	-t, --tasks 	Update the Grunt tasks.
+	-d, --devDeps 	Update the devDependencies.
