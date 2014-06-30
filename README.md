@@ -8,7 +8,7 @@ Install pjs-project-settings globally.
 $ npm i pjs-project-settings -g
 ```
 
-Then run pjs-project-settings from the directory you want to update. 
+Then run `pjs-project-settings` from the directory you want to update. 
 
 It will override your Gruntfile.js and add a directory called grunt/tasks and grunt/settings.
 
@@ -16,7 +16,11 @@ You'll be prompted for every override, except for settings, which should be kept
 
 If you have an existing Gruntfile and want to preserve some of your tasks, try using [grunt-generate-configs](https://github.com/creynders/grunt-generate-configs) with -js option. `generate_configs -js` from the directory of your project. Then copy the output to the grunt/tasks as you see fit.
 
-Once you're set up, make sure the grunt tasks are installed and listed in your package.json under devDependencies.
+Next run this command to update your devDependencies.
+
+```shell
+$ pjs-project-settings --devDeps
+```
 
 ## Grunt tasks
 
@@ -35,17 +39,6 @@ Once you're set up, make sure the grunt tasks are installed and listed in your p
 
 * `bump` Bump the version in the package.json and the bower.json. Example: `grunt bump --level minor`.
 * `githooks` pre-commit: Make sure js files are beautified according to p-js conventions. Build a release, and add the dist folder.
-
-### Troubleshooting
-
-You must have the grunt tasks installed. 
-For example, if you get the warning:
-> Warning: Task "jsbeautifier" not found. Use --force to continue.
-
-Run: 
-```shell
-npm i grunt-jsbeautifier --save-dev
-```
 
 ### Aliases
 
