@@ -1,4 +1,10 @@
 
+0.5.0 / 2014-06-30 
+==================
+
+ * Add devDependencies command.
+ * Add specific options including version and help.
+
 0.4.3 / 2014-06-24 
 ==================
 
