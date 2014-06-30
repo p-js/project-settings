@@ -1,0 +1,14 @@
+Usage: pjs-project-settings [options]
+
+Description:
+
+	Command line tool to update pjs project settings.
+
+Options:
+
+	-v, --version 		Show the version.
+	-h, --help 		Show the help.
+	-a, --all 		Run all updates.
+	-g, --gruntfile 	Update the Gruntfile.js.
+	-t, --tasks 	Update the Grunt tasks.
+	-d, --devDeps 	Update the devDependencies.
