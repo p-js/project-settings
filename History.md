@@ -1,4 +1,9 @@
 
+0.6.0 / 2014-08-28 
+==================
+
+ * Run jsbeautifier:verify when running grunt:release.
+
 0.5.0 / 2014-06-30 
 ==================
 

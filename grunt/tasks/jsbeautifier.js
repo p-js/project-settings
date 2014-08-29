@@ -25,7 +25,13 @@ module.exports = function(grunt, options) {
 				js: jsbeautifyrc,
 				mode: "VERIFY_ONLY"
 			}
+		},
+		verify: {
+			src: src,
+			options: {
+				js: jsbeautifyrc,
+				mode: "VERIFY_ONLY"
+			}
 		}
-
 	};
 };
