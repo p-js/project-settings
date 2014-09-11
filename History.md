@@ -1,3 +1,9 @@
+
+0.8.0 / 2014-09-11 
+==================
+
+ * Switch from testem to karma, add coverage, clean up Gruntfile.
+ 
 0.7.0 / 2014-08-28 
 ==================
 
