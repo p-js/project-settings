@@ -11,7 +11,7 @@ module.exports = {
 				replacement: '<%= grunt.template.today() %>'
 			}, {
 				match: 'version',
-				replacement: '<%= pkg.version %><%= grunt.config("buildNumber") %>'
+				replacement: '<%= package.version %><%= grunt.config("buildNumber") %>'
 			}]
 		},
 		src: "dist/**",
