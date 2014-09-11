@@ -8,8 +8,6 @@ module.exports = function(grunt) {
 		configPath: require("path").join(process.cwd(), 'grunt', 'tasks'),
 		// data is passed into the tasks
 		data: {
-			// pkg is the package.json, used to get name and version.
-			pkg: grunt.file.readJSON('package.json'),
 			// settings are a way to override the defaults.
 			settings: {
 				// defaults, these can be removed.
