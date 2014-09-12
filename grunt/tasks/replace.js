@@ -10,6 +10,9 @@ module.exports = {
 				match: 'timestamp',
 				replacement: '<%= grunt.template.today() %>'
 			}, {
+				match: 'package-name',
+				replacement: '<%= package.name %>'
+			}, {
 				match: 'version',
 				replacement: '<%= package.version %><%= grunt.config("buildNumber") %>'
 			}]
