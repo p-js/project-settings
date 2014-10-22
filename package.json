@@ -1,6 +1,6 @@
 {
 	"name": "pjs-project-settings",
-	"version": "0.8.0",
+	"version": "0.9.0",
 	"scripts": {
 		"prepublish": "npm prune"
 	},
@@ -23,7 +23,8 @@
 		"fs-extra": "^0.9.1",
 		"lodash": "^2.4.1",
 		"minimist": "^0.2.0",
-		"prompt": "^0.2.13"
+		"prompt": "^0.2.13",
+		"rimraf": "^2.2.8"
 	},
 	"homepage": "https://github.com/p-js/project-settings",
 	"devDependencies": {
