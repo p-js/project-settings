@@ -1,4 +1,12 @@
 
+0.9.0 / 2014-10-22 
+==================
+
+ * Only run the replace task on js, css, json and txt
+ * Move grunt/settings/jshint and jsbeautify files to root of project, and use the grunt task to differentiate between devel and release tasks.
+ * Use end-with-newline for jsbeautify settings
+ * Replace package-name
+
 0.8.0 / 2014-09-11 
 ==================
 
