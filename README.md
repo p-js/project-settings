@@ -54,6 +54,7 @@ In grunt/settings you'll find jshint.json and jshint-dev.json. jshint.json is us
 In dev mode, the differences are:
 
 - you can skip semicolons (asi = false).
+- you can have unused variables (unused = false).
 - you can have trailing whitespace (trailing = false). 
 - you can use debug statements (debug = true).
 - you can use console and alert (devel = true).

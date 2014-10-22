@@ -11,5 +11,5 @@
 	"eval_code": false,
 	"unescape_strings": false,
 	"wrap_line_length": 0,
-	"end-with-newline": true
+	"end_with_newline": true
 }
